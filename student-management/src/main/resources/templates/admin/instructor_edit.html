@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{main_template :: layout(~{::title},~{::body/content()})}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Sign Up - CodeJava</title>
+</head>
+<body id="main-content">
+	<div class="container text-center">
+		<div class="mt-5">
+			<h3 class="title-color">Update Instructor</h3>
+		</div>
+		<form th:action="@{/admin/saveInstructor}" th:object="${instructor}"
+			method="post" style="max-width: 600px; margin: 0 auto;">
+			<div class="m-3">
+				<input type="hidden" th:field="*{id}" />
+				<div th:if="${#fields.hasErrors('global')}">
+					<p th:each="err : ${#fields.errors('global')}" th:text="${err}"
+						class="error" style="color: red" />
+				</div>
+				<div class="form-group row ">
+					<label class="col-4 col-form-label">Name:</label>
+					<div class="col-8 mb-3">
+						<input type="text" th:field="*{name}" class="form-control" />
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-4 col-form-label">Description:</label>
+					<div class="col-8 mb-3">
+						<input type="text" th:field="*{description}" class="form-control" />
+					</div>
+				</div>
+				<div class="container text-center">
+					<div class="row">
+						<div class="col"></div>
+						<div class="col-md-auto paddingR0">
+							<button type="submit" class="btn btn-primary">Update</button>
+						</div>
+						<div class="col col-md-auto pl-0">
+							<a th:href="@{/admin/deleteInstructor/{id}(id=${instructor.id})}"
+								class="btn btn-danger">Delete</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="txtStart">
+		<a th:href="@{/admin/instructor_list}"> Back to Instructor List</a>
+	</div>
+</body>
+</html>

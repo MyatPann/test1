@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:tiles="http://www.thymeleaf.org"
+	th:replace="~{main_template :: layout(~{::title},~{::body/content()})}">
+<head>
+<title>Student Management - Apply</title>
+</head>
+<body>
+	<div class="container">
+		<div class="row mt-3">
+			<div class="col-lg-10">
+				<form class="row m-0" th:action="@{/admin/applylist}" method="get">
+					<div class="col-auto searchgp">
+						<input type="text" class="form-control" name="keyword"
+							th:value="${keyword}" placeholder="Title">
+						<button class="btn" id="g-search-button" type="submit">
+							<i class="fa fa-search "></i>
+						</button>
+					</div>
+				</form>
+			</div>
+
+		</div>
+		<h5 class="title-color">Apply List</h5>
+
+		<table class="table">
+
+			<thead class="table-primary">
+				<tr>
+					<th scope="col">No.</th>
+					<th scope="col">Apply Person</th>
+					<th scope="col">Title</th>
+					<th scope="col">Period</th>
+					<th scope="col">Apply Date</th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="user_timetables : ${userlisttimeTable}">
+					<td></td>
+					<!-- <td th:text="${course.title}"></td> -->
+					<td th:text="${user_timetables.user.name}"></td>
+					<td th:text="${user_timetables.timetable.classRoom}"></td>
+					<td><a th:text="${user_timetables.timetable.startDate}"></a>
+						~ <a th:text=" ${user_timetables.timetable.endDate}"></a></td>
+					<td th:text="${user_timetables.applayDate}"></td>
+					<td>
+
+						<form th:action="@{/admin/ApproveUserTimetable/}" method="post">
+							<button th:if="${user_timetables.approveFlag} == false" type="submit" class="btn btn-info">Approve</button>
+							<input type="hidden" name="uid"
+								th:value="${user_timetables.id.user_id}"> <input
+								type="hidden" name="tid"
+								th:value="${user_timetables.id.timetable_id}"> <input
+								type="hidden" name="email"
+								th:value="${#request.userPrincipal?.principal?.Username}">
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

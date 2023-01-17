@@ -1,0 +1,49 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:tiles="http://www.thymeleaf.org"
+	th:replace="~{main_template :: layout(~{::title},~{::body/content()})}">
+<head>
+<meta charset="UTF-8">
+<title>Student Management</title>
+</head>
+<body>
+	<div class="container">
+		<div class="row mt-3">
+			<div class="col-lg-10">
+				<form class="row m-0" th:action="@{/admin/course_search}" method="get">
+					<div class="col-auto searchgp">
+						<input type="text" class="form-control" name="keyword"
+							th:value="${keyword}" placeholder="Title">
+						<button class="btn" id="g-search-button" type="submit">
+							<i class="fa fa-search "></i>
+						</button>
+					</div>
+				</form>
+			</div>
+			<div class="col-lg-2">
+				<a th:href="@{/admin/showNewCourseForm}" class="btn btn-primary">Add
+					New</a>
+			</div>
+		</div>
+		<h5 class="title-color">Course List</h5>
+		<table class="table">
+			<thead class="table-primary">
+				<tr>
+					<th scope="col">No.</th>
+					<th scope="col">Title</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="course : ${listCourses}">
+					<td></td>
+					<!-- <td th:text="${course.title}"></td> -->
+					<td><a
+						th:href="@{/admin/showFormForUpdate/{id}(id=${course.id})}"
+						th:text="${course.title}"></a></td>
+					<td th:text="${course.description}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

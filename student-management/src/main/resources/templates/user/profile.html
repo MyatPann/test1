@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{main_template :: layout(~{::title},~{::body/content()})}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Profile</title>
+</head>
+<body>
+	<div class="container text-center m-1 p-1">
+		<div class="row">
+			<div class="col"></div>
+			<div class="col-md-auto"></div>
+			<div class="col col-lg-2">
+				<a th:href="@{/user/profileShow}" class="btn btn-primary">Update
+					Profile</a>
+			</div>
+		</div>
+	</div>
+	<div class="container name">
+		<div class="row m-0 p-0">
+			<div class="image col-4">
+				<img th:src="@{${userProfile.profileImagePath}}" alt="avatar"
+					class="avatar rounded-circle" />
+
+			</div>
+			<div class="col-5 m-0 p-0">
+				<h1 th:text="${user.name}"></h1>
+				<h5 th:text="${user.email}"></h5>
+			</div>
+			<div class="col m-0 p-0"></div>
+		</div>
+	</div>
+	<div class="container margin-auto p-1">
+		<div class="row">
+			<div class="col-4"></div>
+			<div class="col-2 p-1">
+				<h5>Phone Number</h5>
+				<h5>Address</h5>
+				<h5>Gender</h5>
+				<h5>Birthday</h5>
+				<h5>Age</h5>
+			</div>
+			<div class="col-5 p-1">
+				<h5 th:text="${userProfile.phNumber}"></h5>
+				<h5 th:text="${userProfile.address}"></h5>
+				<h5 th:text="${userProfile.gender}"></h5>
+				<h5 th:text="${userProfile.birthDate}"></h5>
+				<h5 th:text="${userProfile.age}"></h5>
+			</div>
+			<div class="col-1"></div>
+		</div>
+	</div>
+</body>
+</html>

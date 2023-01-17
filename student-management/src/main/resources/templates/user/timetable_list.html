@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{user_template :: layout(~{::title},~{::body/content()})}">
+<head>
+<style>
+ol.a {
+	list-style-type: decimal;
+}
+</style>
+<meta charset="UTF-8">
+<title>timetable list</title>
+</head>
+<body>
+	<br>
+	<h3 style="margin-left: 10px" class="text-blue">TimeTable</h3>
+	<form th:action="@{/timetable_search}" method="get" class="row m-0 ">
+		<div class="searchgp "  style="margin-left: 15px;">
+			<input type="text" class="form-control" name="keyword"
+				th:value="${keyword}" placeholder="Branch or Course">
+			<button class="btn" id="g-search-button" type="submit">
+				<i class="fa fa-search"></i>
+			</button>
+		</div>
+		<div class="text-right col-9 ">
+			<a>If you want to apply u need to login >></a>
+		</div>
+	</form>
+	
+	<div class="row pr-3 pl-3">
+		<div th:each="timetables,iter: ${listtimeTable}" class="col-2">
+			<div class="card bg-light text-dark mb-3 card-style">
+				<div class="card-body p-2 minH200">
+					<div class='row m-0'>
+				
+						<a class="card-title mb-0" th:text="${iter.index+1}+'.'"></a>
+						<h6 class="text-blue mb-0 ml-1"
+							th:text="${timetables.title}"></h6>
+					</div>
+					<a>Course: </a> <a class="pink-color" th:text="${timetables.courseId.title}"></a>
+					<br>
+					<a>Branch: </a> <a class="card-text" th:text="${timetables.branch}"></a>
+					<br> <a>Room: </a> <a class="card-title "
+						th:text="${timetables.classRoom}"></a> <br> <a>Instructed
+						by: </a> <a class="pink-color"
+						th:each="instructors: ${timetables.instructorId}"
+						th:text="${instructors.name}"></a> <br> <a
+						class="linesomething" th:text="${timetables.description}"></a>
+				</div>
+				<div class="card-footer" style="font-size: 13px">
+					<a>Start date: </a> <a class="card-text"
+						th:text="${timetables.startDate}"></a> <br> <a>End date:
+					</a> <a class="card-text" th:text="${timetables.endDate}">end date</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

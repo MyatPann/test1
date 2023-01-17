@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:tiles="http://www.thymeleaf.org"
+	th:replace="~{main_template :: layout(~{::title},~{::body/content()})}">
+<head>
+<title>Student Management - DASHBOARD</title>
+</head>
+<body>
+
+	<ul class="nav nav-pills" id="right-tab">
+		<li class="active"><a href="#tab1" data-toggle="tab">Home</a></li>
+		<li><a href="#tab2" data-toggle="tab">Contents</a></li>
+	</ul>
+
+	<div class="main tab-content">
+		<div class="tab-pane active" id="tab1">
+			<p>tab1</p>
+			<!-- ここから追加 -->
+			<div class="btn-transition">
+				<a id="to-tab2" data-toggle="tab" href="#right1">タブ2へ進む</a>
+			</div>
+			<!-- ここまで追加 -->
+		</div>
+		<div class="tab-pane" id="tab2">
+			<p>tab2</p>
+		</div>
+	</div>
+
+</body>
+</html>

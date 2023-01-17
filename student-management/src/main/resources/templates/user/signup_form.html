@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{user_template :: layout(~{::title},~{::body/content()})}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Sign Up - CodeJava</title>
+</head>
+<body id="main-content">
+	<section class="container">
+		<div class="row content d-flex justify-content-center pt-5">
+			<div class="text-center box shadow bg-white p-5">
+				<div>
+					<h3 class="title-color">Student Registration - Sign Up</h3>
+				</div>
+				<br />
+				<form th:action="@{/process_register}" th:object="${user}"
+					method="post" style="max-width: 600px; margin: 0 auto;">
+					<div >
+						<div th:if="${#fields.hasErrors('global')}">
+							<p th:each="err : ${#fields.errors('global')}" th:text="${err}"
+								class="error" style="color: red" />
+						</div>
+						<div class="form-group row">
+							<label class="col-4 col-form-label">Email:</label>
+							<div class="col-8">
+								<input type="email" th:field="*{email}" class="form-control"
+									required />
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-4 col-form-label">Password:</label>
+							<div class="col-8">
+								<input type="password" th:field="*{password}"
+									class="form-control" required minlength="6" maxlength="10" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-4 col-form-label">Name:</label>
+							<div class="col-8">
+								<input type="text" th:field="*{name}" class="form-control"
+									required minlength="2" maxlength="20" />
+							</div>
+						</div>
+						<div class="txtEnd">
+							<button type="submit" class="btn btn-primary">Sign Up</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
+

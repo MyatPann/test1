@@ -1,0 +1,49 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:tiles="http://www.thymeleaf.org"
+	th:replace="~{user_template :: layout(~{::title},~{::body/content()})}">
+<head>
+<meta charset="UTF-8">
+<title tiles:fragment="title">login</title>
+</head>
+<body>
+	<section class="container">
+		<div class="row content d-flex justify-content-center pt-5">
+			<div class="col-md-5">
+				<div class="text-center box shadow bg-white p-4">
+					<form name="f" th:action="@{/login}" method="post"
+						style="max-width: 600px; margin: 0 auto;">
+						<div class="m-3">
+							<h3 class="title-color">Login to Account</h3>
+							<br>
+							<div th:if="${param.error}" class="alert alert-error">Invalid
+								Email and password.</div>
+							<div th:if="${param.logout}" class="alert alert-success">You
+								have been logged out.</div>
+							<div class="form-group row">
+								<label class="col-4 col-form-label">Email: </label>
+								<div class="col-8">
+									<input class="form-control" type="text" id="email" name="email" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-4 col-form-label">Password: </label>
+								<div class="col-8">
+									<input class="form-control" type="password" id="password"
+										name="password" />
+								</div>
+							</div>
+							<a th:href="@{/forgot_password}">Forgot your password?</a><br>
+							<span>If u have no account <a th:href="@{/register}">Register</a>
+								here
+							</span>
+							<div class="form-actions mt-3 mr-1 txtEnd" >
+								<input type="submit" value="Login" class="btn btn-primary ">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

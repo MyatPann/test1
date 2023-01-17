@@ -1,0 +1,229 @@
+.title-color {
+    color: rgb(181, 181, 255);
+}
+
+.pink-color {
+    color: rgb(255, 128, 128) !important;
+}
+
+.fs-13{
+	font-size: 13px;
+}
+
+.bg-color {
+    background-color: rgb(181, 181, 255);
+}
+
+.card-style{
+ width: 100%;
+}
+
+.minH200{
+	min-height: 200px !important;
+}
+
+:root {
+  --main-bg-color: #009d63;
+  --main-text-color: #009d63;
+  --second-text-color: #bbbec5;
+  --second-bg-color: #c1efde;
+}
+
+.title-color {
+    color: blue;
+    font-weight:bold;
+}
+
+.footer {          
+  color: #fff;
+  text-align: center;
+  padding: 10px 30px;
+  position: fixed;
+  bottom:0;
+  width: 100%;
+  font-weight:bold;
+}
+
+primary-text {
+  color: black;
+}
+
+.second-text {
+  color:black;
+}
+
+.primary-bg {
+  background-color: var(--main-bg-color);
+}
+
+.primary-bar{
+  color:white;
+}
+
+.secondary-bg {
+  background-color: var(--second-bg-color);
+}
+
+.rounded-full {
+  border-radius: 100%;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin 0.25s ease-out;
+  -moz-transition: margin 0.25s ease-out;
+  -o-transition: margin 0.25s ease-out;
+  transition: margin 0.25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+#menu-toggle {
+  cursor: pointer;
+}
+
+.list-group-item {
+  border: none;
+  padding: 20px 30px;
+}
+
+.list-group-item.active{
+  background-color: transparent;
+  color: var(--main-text-color);
+  border: none;
+}
+
+@media (min-width: 600px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+#page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+.text-type {
+  color: white;
+}
+
+.txtStart{
+	text-align: start;
+}
+
+.txtEnd{
+	text-align: end;
+}
+
+.paddingR0{
+	padding-right: 0px;
+}
+
+/* sidebar border */
+#sidebar-wrapper{
+    border-right-style:solid; 
+    border-right-width:0.5px;
+    border-right-color:#dfd9d9;
+}
+
+/* search button */
+#g-search-button {
+  display: inline-block;
+  position: relative;
+  left: 160px;
+  top: -36px;
+
+}
+
+
+.searchgp .btn:focus {
+	box-shadow: none;
+}
+
+/* table serial num column */
+body
+{
+    counter-reset: Serial;           /* Set the Serial counter to 0 */
+}
+
+table
+{
+    border-collapse: separate;
+}
+
+tr td:first-child:before
+{
+  counter-increment: Serial;      /* Increment the Serial counter */
+  content: "" counter(Serial); /* Display the counter */
+}
+
+
+.linesomething {
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+            line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.text-blue {
+  color: blue;
+}
+
+/* profile.html css */
+.name{
+    padding-top: 50px;
+    margin: auto;
+}
+
+.avatar {
+  float:right;
+  margin:4px;
+  vertical-align: middle;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.image{
+    padding-right: 50px;
+}
+
+.form_width{
+    max-width: 600px; 
+    margin: 0 auto;
+}
+
+.botton-style{
+    float: right;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    line-height: 1.5;
+    font-family: Courier;
+}
+

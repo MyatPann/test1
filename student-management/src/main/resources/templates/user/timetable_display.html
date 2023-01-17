@@ -1,0 +1,69 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:tiles="http://www.thymeleaf.org"
+	th:replace="~{main_template :: layout(~{::title},~{::body/content()})}">
+<head>
+<meta charset="UTF-8">
+<title tiles:fragment="title">Student Management</title>
+
+</head>
+<body>
+	<div class="container" style="padding-top: 20px;">
+		<div class="row justify-content-center">
+			<div class="col-4 text-justify" ></div>
+			<div class="col-4 text-center">
+				<span class="text-primary fs-5" th:text="${timetable.title}">Title Here</span>
+			</div>
+			<div class="col-4 ">
+				<form th:action="@{/user/process_Timetable/}" method="POST">
+					<button th:if="${userTimetable.applyFlag == false}" type="submit"
+						class="btn btn-outline-primary">Apply</button>
+					<input type="hidden" name="tid" th:value="${timetable.id}">
+					<button th:if="${userTimetable.applyFlag == true && userTimetable.approveFlag != true}" type="submit"
+						class="btn btn-outline-danger">Un Apply</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="row justify-content-center mb-2">
+		<div class="col-4 text-end" >
+			<span>Classroom ID :</span>
+		</div>
+		<div class="col-4">
+			<span th:text="${timetable.classRoom}"></span>
+		</div>
+
+	</div>
+	<div class="row justify-content-center mb-2">
+		<div class="col-4 text-end">
+			<span>Branch &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; :</span>
+		</div>
+		<div class="col-4">
+			<span th:text="${timetable.branch}"></span>
+		</div>
+	</div>
+	<div class="row justify-content-center mb-2">
+		<div class="col-4 text-end">
+			<span>Start Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</span>
+		</div>
+		<div class="col-4" >
+			<span th:text="${timetable.startDate}"></span>
+		</div>
+	</div>
+	<div class="row justify-content-center mb-2">
+		<div class="col-4 text-end" >
+			<span>End Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</span>
+		</div>
+		<div class="col-4">
+			<span th:text="${timetable.endDate}"></span>
+		</div>
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-4 text-end">
+			<span>Description &nbsp;&nbsp;&nbsp;:</span>
+		</div>
+		<div class="col-4">
+			<span th:text="${timetable.description}"></span>
+		</div>
+	</div>
+</body>
+</html>
